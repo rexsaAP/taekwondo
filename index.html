@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi Atlet Taekwondo - Kubu Raya | Kejuaraan Sekolah</title>
+    <style>
+        :root {
+            --biru-tua: #0a2463;
+            --biru: #1a3b8c;
+            --merah: #c8102e;
+            --merah-muda: #e63946;
+            --putih: #ffffff;
+            --abu-muda: #f5f6fa;
+            --abu: #e2e4ea;
+            --abu-tua: #6c757d;
+            --hitam-lembut: #1a1a2e;
+            --emas: #d4a017;
+            --hijau-sukses: #2d8a4e;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.14);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(160deg, #e8ecf2 0%, #dce3ed 40%, #f0f2f5 100%);
+            min-height: 100vh;
+            color: var(--hitam-lembut);
+            line-height: 1.6;
+        }
+
+        /* ============ HEADER ============ */
+        .header {
+            background: linear-gradient(135deg, var(--biru-tua) 0%, #0f2b6b 30%, var(--biru) 70%, #1e449e 100%);
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(10, 36, 99, 0.35);
+        }
+        .header-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--putih);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--biru-tua);
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
+            flex-shrink: 0;
+            letter-spacing: -1px;
+        }
+        .logo-text h1 {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+        .logo-text span {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+        }
+        .header-badge {
+            background: var(--merah);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            animation: pulse-badge 2.5s infinite;
+            white-space: nowrap;
+        }
+        @keyframes pulse-badge {
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 0 14px rgba(200, 16, 46, 0);
+            }
+        }
+        .nav-tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .nav-tab {
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.85);
+            border: 2px solid transparent;
+            white-space: nowrap;
+        }
+        .nav-tab:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+        .nav-tab.active {
+            background: var(--putih);
+            color: var(--biru-tua);
+            border-color: var(--putih);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* ============ MAIN CONTAINER ============ */
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 24px 20px 40px;
+        }
+
+        /* ============ SECTION / PANEL ============ */
+        .section-panel {
+            display: none;
+            animation: fadeSlide 0.35s ease;
+        }
+        .section-panel.active {
+            display: block;
+        }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(14px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 28px 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border: 1px solid var(--abu);
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+        .card-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--biru-tua);
+            letter-spacing: -0.3px;
+        }
+        .card-header .icon-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--biru-tua);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .card-header .icon-circle.merah {
+            background: var(--merah);
+        }
+        .card-header .icon-circle.hijau {
+            background: var(--hijau-sukses);
+        }
+
+        /* ============ FORM ============ */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 20px;
+        }
+        @media (max-width: 700px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: #333;
+            letter-spacing: -0.2px;
+        }
+        .form-group label .required {
+            color: var(--merah);
+            margin-left: 2px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 11px 14px;
+            border: 2px solid var(--abu);
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: var(--abu-muda);
+            font-family: inherit;
+            width: 100%;
+            color: var(--hitam-lembut);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--biru);
+            box-shadow: 0 0 0 4px rgba(26, 59, 140, 0.08);
+            background: #fff;
+        }
+        .form-group input.error,
+        .form-group select.error {
+            border-color: var(--merah-muda);
+            background: #fff5f5;
+        }
+        .btn {
+            padding: 12px 26px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: -0.2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            white-space: nowrap;
+        }
+        .btn-primary {
+            background: var(--biru-tua);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(10, 36, 99, 0.3);
+        }
+        .btn-primary:hover {
+            background: #0d2e7a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(10, 36, 99, 0.4);
+        }
+        .btn-success {
+            background: var(--hijau-sukses);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(45, 138, 78, 0.3);
+        }
+        .btn-success:hover {
+            background: #23763e;
+            transform: translateY(-2px);
+        }
+        .btn-outline {
+            background: #fff;
+            color: var(--biru-tua);
+            border: 2px solid var(--biru-tua);
+        }
+        .btn-outline:hover {
+            background: var(--biru-tua);
+            color: #fff;
+        }
+        .btn-danger {
+            background: var(--merah);
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #a50d24;
+        }
+        .btn-sm {
+            padding: 7px 14px;
+            font-size: 0.8rem;
+            border-radius: 18px;
+        }
+        .btn-xs {
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            border-radius: 14px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        /* ============ TABLE ============ */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--abu);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            min-width: 900px;
+        }
+        table thead {
+            background: var(--biru-tua);
+            color: #fff;
+        }
+        table th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+        table td {
+            padding: 10px;
+            border-bottom: 1px solid var(--abu);
+            white-space: nowrap;
+        }
+        table tbody tr {
+            transition: background 0.2s;
+        }
+        table tbody tr:hover {
+            background: #f0f4ff;
+        }
+        .badge-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .badge-aktif {
+            background: #d4edda;
+            color: #155724;
+        }
+        .badge-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--abu-tua);
+        }
+        .empty-state .empty-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        /* ============ URL BOX ============ */
+        .url-box {
+            background: #f0f4ff;
+            border: 2px dashed var(--biru);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            word-break: break-all;
+            font-size: 0.9rem;
+            color: var(--biru-tua);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .url-box .url-text {
+            flex: 1;
+            min-width: 200px;
+        }
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #1a1a2e;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 999;
+            box-shadow: var(--shadow-lg);
+            animation: toastIn 0.35s ease, toastOut 0.35s ease 2.2s forwards;
+            opacity: 1;
+        }
+        @keyframes toastIn {
+            from {
+                transform: translateX(120px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes toastOut {
+            to {
+                transform: translateX(120px);
+                opacity: 0;
+            }
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .nav-tabs {
+                width: 100%;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                gap: 4px;
+            }
+            .nav-tab {
+                padding: 8px 14px;
+                font-size: 0.78rem;
+            }
+            .card {
+                padding: 18px 16px;
+            }
+            .btn {
+                padding: 10px 18px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo-area">
+                <div class="logo-icon">TK</div>
+                <div class="logo-text">
+                    <h1>Taekwondo Kubu Raya</h1>
+                    <span>Platform Registrasi Atlet • Kejuaraan Sekolah</span>
+                </div>
+            </div>
+            <span class="header-badge">🏆 Presnas Ready</span>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-panel="panel-daftar">📋 Pendaftaran</button>
+                <button class="nav-tab" data-panel="panel-data">📊 Data Atlet</button>
+                <button class="nav-tab" data-panel="panel-url">🔗 Generate URL Presnas</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <div class="main-container">
+
+        <!-- PANEL 1: FORM PENDAFTARAN -->
+        <section class="section-panel active" id="panel-daftar">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-circle">📋</div>
+                    <h2>Formulir Pendaftaran Atlet Taekwondo</h2>
+                </div>
+                <p style="margin-bottom:18px;color:#555;">Lengkapi data di bawah untuk mendaftarkan atlet ke dalam sistem <strong>Kejuaraan Sekolah Kubu Raya</strong>. Tanda <span style="color:#c8102e;">*</span> wajib diisi.</p>
+                <form id="formPendaftaran" autocomplete="off">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nama Lengkap <span class="required">*</span></label>
+                            <input type="text" id="nama" placeholder="Nama atlet" required>
+                        </div>
+                        <div class="form-group">
+                            <label>NISN <span class="required">*</span></label>
+                            <input type="text" id="nisn" placeholder="Nomor Induk Siswa Nasional" required pattern="[0-9]{10}" maxlength="10" title="Harus 10 digit angka">
+                        </div>
+                        <div class="form-group">
+                            <label>Asal Sekolah <span class="required">*</span></label>
+                            <input type="text" id="sekolah" placeholder="Nama sekolah" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Kelas <span class="required">*</span></label>
+                            <select id="kelas" required>
+                                <option value="">-- Pilih Kelas --</option>
+                                <option>7 SMP</option><option>8 SMP</option><option>9 SMP</option>
+                                <option>10 SMA</option><option>11 SMA</option><option>12 SMA</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis Kelamin <span class="required">*</span></label>
+                            <select id="jk" required>
+                                <option value="">-- Pilih --</option>
+                                <option>Laki-laki</option><option>Perempuan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tempat Lahir <span class="required">*</span></label>
+                            <input type="text" id="tempatLahir" placeholder="Kota/Kabupaten" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tanggal Lahir <span class="required">*</span></label>
+                            <input type="date" id="tglLahir" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Kategori Pertandingan <span class="required">*</span></label>
+                            <select id="kategori" required>
+                                <option value="">-- Pilih Kategori --</option>
+                                <option>Kyorugi (Pertarungan) - Pemula</option>
+                                <option>Kyorugi (Pertarungan) - Prestasi</option>
+                                <option>Poomsae (Jurus) - Tunggal</option>
+                                <option>Poomsae (Jurus) - Beregu</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tingkat Sabuk <span class="required">*</span></label>
+                            <select id="sabuk" required>
+                                <option value="">-- Pilih Sabuk --</option>
+                                <option>Putih</option><option>Kuning</option><option>Hijau</option>
+                                <option>Biru</option><option>Merah</option><option>Hitam DAN I</option>
+                                <option>Hitam DAN II</option><option>Hitam DAN III</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telepon / WA <span class="required">*</span></label>
+                            <input type="tel" id="telepon" placeholder="08xxxxxxxxxx" required pattern="[0-9]{10,13}">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="email@contoh.com">
+                        </div>
+                    </div>
+                    <div class="btn-group" style="margin-top:20px;">
+                        <button type="submit" class="btn btn-primary">✅ Daftarkan Atlet</button>
+                        <button type="reset" class="btn btn-outline">🔄 Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- PANEL 2: DATA ATLET TERDAFTAR -->
+        <section class="section-panel" id="panel-data">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-circle merah">📊</div>
+                    <h2>Data Atlet Terdaftar</h2>
+                </div>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center;">
+                    <input type="text" id="searchInput" placeholder="🔍 Cari nama / NISN / sekolah..." style="padding:10px 16px;border:2px solid #e2e4ea;border-radius:25px;flex:1;min-width:220px;font-size:0.9rem;">
+                    <button class="btn btn-outline btn-sm" id="btnExportCSV">📥 Ekspor CSV</button>
+                    <button class="btn btn-danger btn-sm" id="btnHapusSemua">🗑 Hapus Semua</button>
+                </div>
+                <div class="table-wrapper">
+                    <table id="tabelAtlet">
+                        <thead>
+                            <tr>
+                                <th>No</th><th>Nama</th><th>NISN</th><th>Sekolah</th><th>Kelas</th>
+                                <th>JK</th><th>Kategori</th><th>Sabuk</th><th>Telepon</th>
+                                <th>URL Presnas</th><th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelBody">
+                            <tr class="empty-state">
+                                <td colspan="11"><span class="empty-icon">📭</span>Belum ada atlet terdaftar. Silakan isi formulir pendaftaran terlebih dahulu.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="margin-top:10px;font-size:0.8rem;color:#888;">Total atlet: <strong id="totalAtlet">0</strong></p>
+            </div>
+        </section>
+
+        <!-- PANEL 3: GENERATE URL PRESTASI NASIONAL -->
+        <section class="section-panel" id="panel-url">
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-circle hijau">🔗</div>
+                    <h2>Generate URL Integrasi Presnas</h2>
+                </div>
+                <p style="margin-bottom:16px;">URL unik ini digunakan untuk dicantumkan di <strong>Situs Presnas (Prestasi Nasional)</strong>. Pilih atlet untuk mendapatkan tautan resmi.</p>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;">
+                    <select id="selectAtletUrl" style="padding:10px;border:2px solid #e2e4ea;border-radius:8px;flex:1;min-width:250px;font-size:0.9rem;">
+                        <option value="">-- Pilih Atlet --</option>
+                    </select>
+                    <button class="btn btn-success" id="btnGenerateUrl">🔗 Buat Tautan Presnas</button>
+                </div>
+                <div id="hasilUrlContainer" style="display:none;">
+                    <p style="font-weight:700;color:var(--biru-tua);">✅ URL Presnas untuk atlet:</p>
+                    <div class="url-box">
+                        <span class="url-text" id="urlTeks"></span>
+                        <button class="btn btn-sm btn-primary" id="btnSalinUrl">📋 Salin</button>
+                    </div>
+                    <p style="font-size:0.78rem;color:#888;margin-top:6px;">⚠️ Tautan ini siap diintegrasikan ke Situs Presnas untuk verifikasi prestasi siswa.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="icon-circle">📦</div>
+                    <h2>Ekspor Semua URL Presnas</h2>
+                </div>
+                <p>Unduh daftar seluruh URL Presnas atlet dalam format JSON untuk keperluan integrasi massal.</p>
+                <button class="btn btn-outline" id="btnExportJSON" style="margin-top:8px;">📄 Ekspor JSON (Presnas Format)</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- ==================== TOAST NOTIFICATION ==================== -->
+    <div id="toast" class="toast" style="display:none;"></div>
+
+    <script>
+        (function() {
+            // ============ STORAGE KEY ============
+            const STORAGE_KEY = 'taekwondo_kuburaya_atlet';
+
+            // ============ DOM ELEMENTS ============
+            const formPendaftaran = document.getElementById('formPendaftaran');
+            const tabelBody = document.getElementById('tabelBody');
+            const totalAtletEl = document.getElementById('totalAtlet');
+            const searchInput = document.getElementById('searchInput');
+            const selectAtletUrl = document.getElementById('selectAtletUrl');
+            const hasilUrlContainer = document.getElementById('hasilUrlContainer');
+            const urlTeks = document.getElementById('urlTeks');
+            const toast = document.getElementById('toast');
+            const navTabs = document.querySelectorAll('.nav-tab');
+            const sectionPanels = document.querySelectorAll('.section-panel');
+
+            // ============ DATA STORE ============
+            let dataAtlet = [];
+
+            // ============ LOAD DATA ============
+            function loadData() {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    try {
+                        dataAtlet = JSON.parse(stored);
+                    } catch (e) {
+                        dataAtlet = [];
+                    }
+                } else {
+                    // Data contoh awal
+                    dataAtlet = [{
+                        id: generateId(),
+                        nama: 'Ahmad Fauzi',
+                        nisn: '0034567890',
+                        sekolah: 'SMAN 1 Sungai Raya',
+                        kelas: '11 SMA',
+                        jk: 'Laki-laki',
+                        tempatLahir: 'Pontianak',
+                        tglLahir: '2008-05-12',
+                        kategori: 'Kyorugi (Pertarungan) - Prestasi',
+                        sabuk: 'Merah',
+                        telepon: '081234567890',
+                        email: 'ahmad@contoh.com',
+                        urlPresnas: '',
+                        tanggalDaftar: new Date().toISOString()
+                    }, {
+                        id: generateId(),
+                        nama: 'Siti Nurhaliza',
+                        nisn: '0034567891',
+                        sekolah: 'SMPN 2 Kubu Raya',
+                        kelas: '9 SMP',
+                        jk: 'Perempuan',
+                        tempatLahir: 'Kubu Raya',
+                        tglLahir: '2009-11-20',
+                        kategori: 'Poomsae (Jurus) - Tunggal',
+                        sabuk: 'Biru',
+                        telepon: '082198765432',
+                        email: 'siti@contoh.com',
+                        urlPresnas: '',
+                        tanggalDaftar: new Date().toISOString()
+                    }];
+                    saveData();
+                }
+            }
+
+            function saveData() {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(dataAtlet));
+            }
+
+            function generateId() {
+                return 'TKD-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substring(
+                    2, 6).toUpperCase();
+            }
+
+            // ============ RENDER TABEL ============
+            function renderTabel(filter = '') {
+                const keyword = filter.toLowerCase().trim();
+                let filtered = dataAtlet;
+                if (keyword) {
+                    filtered = dataAtlet.filter(a =>
+                        a.nama.toLowerCase().includes(keyword) ||
+                        a.nisn.includes(keyword) ||
+                        a.sekolah.toLowerCase().includes(keyword) ||
+                        a.kelas.toLowerCase().includes(keyword)
+                    );
+                }
+                if (filtered.length === 0) {
+                    tabelBody.innerHTML = `
+                        <tr class="empty-state">
+                            <td colspan="11"><span class="empty-icon">📭</span>Tidak ada data atlet${keyword ? ' yang cocok dengan pencarian' : ''}.</td>
+                        </tr>`;
+                } else {
+                    tabelBody.innerHTML = filtered.map((a, i) => `
+                        <tr>
+                            <td>${i + 1}</td>
+                            <td><strong>${escapeHTML(a.nama)}</strong></td>
+                            <td>${escapeHTML(a.nisn)}</td>
+                            <td>${escapeHTML(a.sekolah)}</td>
+                            <td>${escapeHTML(a.kelas)}</td>
+                            <td>${escapeHTML(a.jk)}</td>
+                            <td>${escapeHTML(a.kategori)}</td>
+                            <td>${escapeHTML(a.sabuk)}</td>
+                            <td>${escapeHTML(a.telepon)}</td>
+                            <td>
+                                ${a.urlPresnas 
+                                    ? '<span class="badge-status badge-aktif">✅ Tersedia</span>' 
+                                    : '<span class="badge-status badge-pending">⏳ Belum</span>'}
+                            </td>
+                            <td>
+                                <button class="btn btn-xs btn-outline" onclick="window.editAtlet('${a.id}')">✏️</button>
+                                <button class="btn btn-xs btn-danger" onclick="window.hapusAtlet('${a.id}')">🗑</button>
+                                ${!a.urlPresnas ? `<button class="btn btn-xs btn-success" onclick="window.generateSingleUrl('${a.id}')">🔗</button>` : ''}
+                            </td>
+                        </tr>
+                    `).join('');
+                }
+                totalAtletEl.textContent = dataAtlet.length;
+                populateSelectUrl();
+            }
+
+            function escapeHTML(str) {
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            // ============ POPULATE SELECT URL ============
+            function populateSelectUrl() {
+                const select = selectAtletUrl;
+                select.innerHTML = '<option value="">-- Pilih Atlet --</option>';
+                dataAtlet.forEach(a => {
+                    const opt = document.createElement('option');
+                    opt.value = a.id;
+                    opt.textContent = `${a.nama} (${a.nisn}) - ${a.sekolah}`;
+                    select.appendChild(opt);
+                });
+            }
+
+            // ============ FORM SUBMIT ============
+            formPendaftaran.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Validasi
+                const nisnInput = document.getElementById('nisn');
+                if (nisnInput.value.length !== 10 || !/^\d{10}$/.test(nisnInput.value)) {
+                    showToast('❌ NISN harus 10 digit angka!');
+                    nisnInput.classList.add('error');
+                    nisnInput.focus();
+                    return;
+                }
+                nisnInput.classList.remove('error');
+                const teleponInput = document.getElementById('telepon');
+                if (!/^\d{10,13}$/.test(teleponInput.value)) {
+                    showToast('❌ Nomor telepon harus 10-13 digit angka!');
+                    teleponInput.classList.add('error');
+                    teleponInput.focus();
+                    return;
+                }
+                teleponInput.classList.remove('error');
+
+                // Cek NISN duplikat
+                const nisnExist = dataAtlet.some(a => a.nisn === nisnInput.value);
+                if (nisnExist) {
+                    showToast('⚠️ NISN sudah terdaftar! Silakan periksa kembali.');
+                    return;
+                }
+
+                const atletBaru = {
+                    id: generateId(),
+                    nama: document.getElementById('nama').value.trim(),
+                    nisn: nisnInput.value.trim(),
+                    sekolah: document.getElementById('sekolah').value.trim(),
+                    kelas: document.getElementById('kelas').value,
+                    jk: document.getElementById('jk').value,
+                    tempatLahir: document.getElementById('tempatLahir').value.trim(),
+                    tglLahir: document.getElementById('tglLahir').value,
+                    kategori: document.getElementById('kategori').value,
+                    sabuk: document.getElementById('sabuk').value,
+                    telepon: teleponInput.value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    urlPresnas: '',
+                    tanggalDaftar: new Date().toISOString()
+                };
+                dataAtlet.push(atletBaru);
+                saveData();
+                renderTabel(searchInput.value);
+                formPendaftaran.reset();
+                showToast('✅ Atlet berhasil didaftarkan!');
+                // Auto-generate URL
+                generateUrlForAtlet(atletBaru.id);
+                // Switch ke panel data
+                switchPanel('panel-data');
+            });
+
+            // ============ GENERATE URL ============
+            function generateUrlForAtlet(id) {
+                const atlet = dataAtlet.find(a => a.id === id);
+                if (!atlet) return;
+                const baseURL = 'https://presnas.kemdikbud.go.id/taekwondo-kuburaya/verify?id=';
+                const urlPresnas = baseURL + encodeURIComponent(atlet.id) + '&nisn=' + encodeURIComponent(atlet.nisn);
+                atlet.urlPresnas = urlPresnas;
+                saveData();
+                renderTabel(searchInput.value);
+            }
+
+            window.generateSingleUrl = function(id) {
+                generateUrlForAtlet(id);
+                showToast('🔗 URL Presnas berhasil dibuat!');
+            };
+
+            // ============ HAPUS ATLET ============
+            window.hapusAtlet = function(id) {
+                if (confirm('Yakin ingin menghapus data atlet ini? Tindakan ini tidak dapat dibatalkan.')) {
+                    dataAtlet = dataAtlet.filter(a => a.id !== id);
+                    saveData();
+                    renderTabel(searchInput.value);
+                    hasilUrlContainer.style.display = 'none';
+                    showToast('🗑 Data atlet dihapus.');
+                }
+            };
+
+            // ============ EDIT ATLET (sederhana: hapus lalu isi form) ============
+            window.editAtlet = function(id) {
+                const atlet = dataAtlet.find(a => a.id === id);
+                if (!atlet) return;
+                if (confirm(
+                        `Edit data ${atlet.nama}? Data akan dihapus dari tabel dan diisikan ke formulir. Lanjutkan?`
+                        )) {
+                    document.getElementById('nama').value = atlet.nama;
+                    document.getElementById('nisn').value = atlet.nisn;
+                    document.getElementById('sekolah').value = atlet.sekolah;
+                    document.getElementById('kelas').value = atlet.kelas;
+                    document.getElementById('jk').value = atlet.jk;
+                    document.getElementById('tempatLahir').value = atlet.tempatLahir;
+                    document.getElementById('tglLahir').value = atlet.tglLahir;
+                    document.getElementById('kategori').value = atlet.kategori;
+                    document.getElementById('sabuk').value = atlet.sabuk;
+                    document.getElementById('telepon').value = atlet.telepon;
+                    document.getElementById('email').value = atlet.email || '';
+                    dataAtlet = dataAtlet.filter(a => a.id !== id);
+                    saveData();
+                    renderTabel(searchInput.value);
+                    switchPanel('panel-daftar');
+                    showToast('✏️ Data dipindahkan ke formulir. Silakan edit dan daftarkan ulang.');
+                }
+            };
+
+            // ============ BUTTON GENERATE URL (PANEL 3) ============
+            document.getElementById('btnGenerateUrl').addEventListener('click', function() {
+                const selectedId = selectAtletUrl.value;
+                if (!selectedId) {
+                    showToast('⚠️ Silakan pilih atlet terlebih dahulu.');
+                    return;
+                }
+                generateUrlForAtlet(selectedId);
+                const atlet = dataAtlet.find(a => a.id === selectedId);
+                if (atlet && atlet.urlPresnas) {
+                    urlTeks.textContent = atlet.urlPresnas;
+                    hasilUrlContainer.style.display = 'block';
+                    showToast('🔗 URL Presnas berhasil dibuat!');
+                }
+            });
+
+            // ============ SALIN URL ============
+            document.getElementById('btnSalinUrl').addEventListener('click', function() {
+                const teks = urlTeks.textContent;
+                if (teks) {
+                    navigator.clipboard.writeText(teks).then(() => {
+                        showToast('📋 URL disalin ke clipboard!');
+                    }).catch(() => {
+                        showToast('⚠️ Gagal menyalin. Silakan salin manual.');
+                    });
+                }
+            });
+
+            // ============ SEARCH ============
+            searchInput.addEventListener('input', function() {
+                renderTabel(this.value);
+            });
+
+            // ============ EXPORT CSV ============
+            document.getElementById('btnExportCSV').addEventListener('click', function() {
+                if (dataAtlet.length === 0) {
+                    showToast('⚠️ Tidak ada data untuk diekspor.');
+                    return;
+                }
+                let csv = 'No,Nama,NISN,Sekolah,Kelas,JK,Kategori,Sabuk,Telepon,Email,URL Presnas,Tanggal Daftar\n';
+                dataAtlet.forEach((a, i) => {
+                    csv +=
+                        `${i+1},"${a.nama}","${a.nisn}","${a.sekolah}","${a.kelas}","${a.jk}","${a.kategori}","${a.sabuk}","${a.telepon}","${a.email||''}","${a.urlPresnas||''}","${new Date(a.tanggalDaftar).toLocaleDateString('id-ID')}"\n`;
+                });
+                downloadFile(csv, 'data-atlet-taekwondo-kuburaya.csv', 'text/csv');
+                showToast('📥 CSV berhasil diunduh.');
+            });
+
+            // ============ EXPORT JSON PRESNAS ============
+            document.getElementById('btnExportJSON').addEventListener('click', function() {
+                const presnasData = dataAtlet.map(a => ({
+                    id_presnas: a.id,
+                    nama: a.nama,
+                    nisn: a.nisn,
+                    sekolah: a.sekolah,
+                    kelas: a.kelas,
+                    kategori: a.kategori,
+                    sabuk: a.sabuk,
+                    url_verify: a.urlPresnas || 'Belum dibuat',
+                    tanggal_daftar: a.tanggalDaftar
+                }));
+                const jsonStr = JSON.stringify({ source: 'Taekwondo Kubu Raya',
+                    total_atlet: dataAtlet.length,
+                    data: presnasData }, null, 2);
+                downloadFile(jsonStr, 'presnas-taekwondo-kuburaya.json', 'application/json');
+                showToast('📄 JSON Presnas berhasil diunduh.');
+            });
+
+            // ============ HAPUS SEMUA ============
+            document.getElementById('btnHapusSemua').addEventListener('click', function() {
+                if (dataAtlet.length === 0) return;
+                if (confirm(
+                        `⚠️ Yakin ingin menghapus SEMUA data (${dataAtlet.length} atlet)? Tindakan ini tidak dapat dibatalkan.`
+                        )) {
+                    dataAtlet = [];
+                    saveData();
+                    renderTabel();
+                    hasilUrlContainer.style.display = 'none';
+                    showToast('🗑 Semua data atlet telah dihapus.');
+                }
+            });
+
+            // ============ NAVIGASI TAB ============
+            function switchPanel(panelId) {
+                sectionPanels.forEach(p => p.classList.remove('active'));
+                navTabs.forEach(t => t.classList.remove('active'));
+                const panel = document.getElementById(panelId);
+                if (panel) panel.classList.add('active');
+                const tab = document.querySelector(`[data-panel="${panelId}"]`);
+                if (tab) tab.classList.add('active');
+                if (panelId === 'panel-data') renderTabel(searchInput.value);
+                if (panelId === 'panel-url') {
+                    populateSelectUrl();
+                    hasilUrlContainer.style.display = 'none';
+                }
+            }
+            navTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const panelId = this.getAttribute('data-panel');
+                    switchPanel(panelId);
+                });
+            });
+
+            // ============ TOAST ============
+            function showToast(msg) {
+                toast.textContent = msg;
+                toast.style.display = 'block';
+                toast.style.animation = 'none';
+                toast.offsetHeight;
+                toast.style.animation = 'toastIn 0.35s ease, toastOut 0.35s ease 2.2s forwards';
+                clearTimeout(toast._timeout);
+                toast._timeout = setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 2600);
+            }
+
+            // ============ DOWNLOAD HELPER ============
+            function downloadFile(content, filename, mimeType) {
+                const blob = new Blob([content], { type: mimeType });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            // ============ INIT ============
+            loadData();
+            renderTabel();
+            populateSelectUrl();
+
+            // Expose fungsi ke global scope
+            window.editAtlet = window.editAtlet;
+            window.hapusAtlet = window.hapusAtlet;
+            window.generateSingleUrl = window.generateSingleUrl;
+        })();
+    </script>
+</body>
+</html>
